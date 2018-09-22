@@ -12,6 +12,36 @@ public class Deck {
 
     Stack<Card> content = new Stack<>();
 
+    public Deck(int decksCount) {
+        this.content.addAll(initializeDeck(decksCount));
+    }
+
+    public List<Card> initializeDeck(int decksCount){
+        Map<String,Integer> cardValues = initializeValues();
+        List<Card> cardList = new ArrayList<>();
+
+        for(Suit suit : Suit.values()) {
+            for(Rank rank : Rank.values()) {
+                for(int i = 0; i < decksCount; i++) {
+                    Card card = new Card(suit, rank, cardValues.get(rank.toString()));
+                    cardList.add(card);
+                }
+            }
+        }
+
+        Collections.shuffle(cardList);
+        return cardList;
+    }
+
+   public Card popCard(){
+        if (this.content.isEmpty()){
+            System.out.println("Oh no, deck is empty!");
+            return null;
+        } else {
+            return content.pop();
+        }
+   }
+
     private Map<String,Integer> initializeValues(){
         Map<String,Integer> cardValues = new HashMap<>();
         cardValues.put("TWO",2);
@@ -31,32 +61,4 @@ public class Deck {
         return cardValues;
     }
 
-    public void initializeDeck(int decksCount){
-
-        Map<String,Integer> cardValues = initializeValues();
-        List<Card> cardList = new ArrayList<>();
-        for(Suit suit : Suit.values()) {
-            for(Rank rank : Rank.values()) {
-                for(int i = 0; i < decksCount; i++) {
-                    Card card = new Card(suit, rank, cardValues.get(rank.toString()));
-                    cardList.add(card);
-                }
-            }
-        }
-        Collections.shuffle(cardList);
-        this.content.addAll(cardList);
-    }
-
-   public Card popCard(){
-        if (this.content.isEmpty()){
-            System.out.println("Oh no, deck is empty!");
-            return null;
-        } else {
-            return content.pop();
-        }
-   }
-
-    public Stack<Card> getContent() {
-        return content;
-    }
 }
