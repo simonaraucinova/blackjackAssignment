@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5395d6d1-727f-405c-8cfa-d8200597abae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Authorities/CardManipulator.class" afterPath="$PROJECT_DIR$/target/classes/Authorities/CardManipulator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Authorities/GameModerator.class" afterPath="$PROJECT_DIR$/target/classes/Authorities/GameModerator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/GameEntities/Dealer.class" afterPath="$PROJECT_DIR$/target/classes/GameEntities/Dealer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/GameEntities/Player.class" afterPath="$PROJECT_DIR$/target/classes/GameEntities/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Main.class" afterPath="$PROJECT_DIR$/target/classes/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Authorities/CardManipulator.java" afterPath="$PROJECT_DIR$/src/main/java/Authorities/CardManipulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Authorities/GameModerator.java" afterPath="$PROJECT_DIR$/src/main/java/Authorities/GameModerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/CardProperties/Rank.java" afterPath="$PROJECT_DIR$/src/main/java/CardProperties/Rank.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/CardProperties/Suit.java" afterPath="$PROJECT_DIR$/src/main/java/CardProperties/Suit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DBUtils/HibernateUtils.java" afterPath="$PROJECT_DIR$/src/main/java/DBUtils/HibernateUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/DBUtils/ResultService.java" afterPath="$PROJECT_DIR$/src/main/java/DBUtils/ResultService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GameEntities/Card.java" afterPath="$PROJECT_DIR$/src/main/java/GameEntities/Card.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GameEntities/Dealer.java" afterPath="$PROJECT_DIR$/src/main/java/GameEntities/Dealer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GameEntities/Deck.java" afterPath="$PROJECT_DIR$/src/main/java/GameEntities/Deck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GameEntities/Player.java" afterPath="$PROJECT_DIR$/src/main/java/GameEntities/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/GameEntities/Result.java" afterPath="$PROJECT_DIR$/src/main/java/GameEntities/Result.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/dbEntity/Result.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/dbEntity/Result.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/dbEntity/Result.hbm.xml" afterPath="$PROJECT_DIR$/target/classes/dbEntity/Result.hbm.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -153,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="397">
-              <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -165,15 +148,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dealer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameEntities/Dealer.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-              <folding>
-                <element signature="e#192#193#0" expanded="false" />
-                <element signature="e#223#224#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1870">
+              <caret line="85" column="50" lean-forward="false" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -255,6 +235,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Authorities/CardManipulator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Authorities/GameModerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -937,12 +918,12 @@
       <workItem from="1537565239984" duration="43180000" />
       <workItem from="1537690158922" duration="18842000" />
       <workItem from="1537712488509" duration="9691000" />
-      <workItem from="1537727066333" duration="2380000" />
+      <workItem from="1537727066333" duration="2841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84437000" />
+    <option name="totallyTimeSpent" value="84898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2409" y="-9" width="2418" height="1308" extended-state="6" />
@@ -997,17 +978,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameEntities/Dealer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#192#193#0" expanded="false" />
-            <element signature="e#223#224#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Authorities/GameModerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2948">
@@ -1501,10 +1471,18 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
-          <caret line="41" column="12" lean-forward="false" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1870">
+          <caret line="85" column="50" lean-forward="false" selection-start-line="85" selection-start-column="50" selection-end-line="85" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

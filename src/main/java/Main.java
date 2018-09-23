@@ -39,7 +39,7 @@ public class Main {
             Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
             ResultService.saveAllResults(results, counter);
-            
+
             session.getTransaction().commit();
 
             System.out.println("If you would like to play " +
