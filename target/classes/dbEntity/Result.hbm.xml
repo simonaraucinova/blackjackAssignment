@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="GameEntities.Result" table="RESULTS" catalog="blackjack">
+        <id name="id" type="java.lang.Long">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" length="30"/>
+        </property>
+        <property name="score" type="java.lang.Byte">
+            <column name="Score"/>
+        </property>
+        <property name="bet" type="java.lang.Short">
+            <column name="Bet" />
+        </property>
+        <property name="price" type="java.lang.Float">
+            <column name="Price" />
+        </property>
+        <property name="note" type="string">
+            <column name="Note" length="30"/>
+        </property>
+    </class>
+</hibernate-mapping>

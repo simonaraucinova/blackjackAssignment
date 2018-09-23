@@ -4,6 +4,7 @@ import Authorities.CardManipulator;
 import GameEntities.Dealer;
 import GameEntities.Deck;
 import GameEntities.Player;
+import GameEntities.Result;
 
 import java.util.*;
 
@@ -60,7 +61,7 @@ public class GameModerator {
 
     private int getPlayersCount() {
         System.out.println("Cards are ready. Now please introduce players. " +
-                "The dealer is PC. How many people are going to play against it? The minimum is 1 and maximum is 6.");
+                "The dealer is PC. \nHow many people are going to play against it? The minimum is 1 and maximum is 6.");
         int playersCount = -1;
         String input = "";
         while (playersCount < 1 || playersCount > 6) {
@@ -134,33 +135,54 @@ public class GameModerator {
             }
         }
     }
-    public void printFinalScore(List<Player> players){
+    public List<Result> printFinalScore(List<Player> players){
         System.out.println("Results: ");
+        List<Result> results = new ArrayList<>();
         for (int i = 0; i < players.size() - 1; i++){
             Player player = players.get(i);
-            System.out.println(getFinalOfPlayer(player));
+
+            Result result = new Result();
+            result.setName(player.getName());
+            result.setBet((short)player.getBet());
+            result.setScore((byte)player.getActualCount());
+
+            System.out.println(getFinalOfPlayer(player,result));
+            results.add(result);
         }
 
         System.out.println("Dealer: " + dealer.getActualCount() + ". " +
                 ((dealer.getActualCount() > 21) ? "Dealer has trop." : ""));
+        return results;
     }
 
-    public String getFinalOfPlayer(Player player){
+    public String getFinalOfPlayer(Player player, Result result){
         if (player.hasBlackJack()){
+            result.setNote("Blackjack");
+            result.setPrice((float)(player.getBet()*1.5));
             return (player.getName() + ": Blackjack. Congratulation, you have won :) You get back your bet "
                     + (float)player.getBet() + "$ and you won " + (float)(player.getBet()*1.5) + "$.");
         } else {
             String out = "";
             if(player.getActualCount() > 21){
+                result.setNote("Lost");
+                result.setPrice(player.getBet() * -1);
                 out = ". You have trop, so you have lost " + (float)player.getBet() + "$.";
             } else if(player.isSurrender()){
+                result.setNote("Surrender");
+                result.setPrice((float)(player.getBet()*-1)/2);
                 out = ". You have surrendered. You get back half of your bet " + (float)player.getBet()/2 + "$.";
             } else if (dealer.getActualCount() > player.getActualCount() && dealer.getActualCount() < 22){
+                result.setNote("Lost");
+                result.setPrice(player.getBet() * -1);
                 out = ". You have less points than dealer, so you have lost " + (float)player.getBet() + "$.";
             } else if(dealer.getActualCount() < player.getActualCount() || dealer.getActualCount() > 21){
+                result.setNote("Win");
+                result.setPrice((float) player.getBet());
                 out = ". Congratulation, you have won :) You get back your bet " + (float)player.getBet() +
                         "$ and you won " + (float)player.getBet() + "$.";
             } else {
+                result.setNote("Draw");
+                result.setPrice(0);
                 out = ". It is a draw. You get back your bet " + (float)player.getBet() + "$.";
             }
             return (player.getName() + ": " + player.getActualCount() + out);
@@ -179,7 +201,7 @@ public class GameModerator {
 
         while (!input.equals("S") && !input.equals("H") &&  !input.equals("Q")) {
             input = scanner.nextLine().toUpperCase();
-            if (reactToAnswer(input,manipulator,player,deck)){
+            if (!reactToAnswer(input,manipulator,player,deck)){
                 input = "X";
             }
         }
@@ -189,11 +211,11 @@ public class GameModerator {
         switch (input){
             case "H":
                 manipulator.hit(player,deck);
-                break;
+                return true;
             case "S":
                 player.setStanding(true);
                 System.out.println(player.getName() + " is standing.");
-                break;
+                return true;
             case "Q":
                 return reactToSurrender(player);
             default:
