@@ -6,7 +6,9 @@ import CardProperties.Suit;
 import java.util.*;
 
 /**
- * Created by Simi on 21.9.2018.
+ * Represents deck in one round of game.
+ *
+ * Author: SimRau
  */
 public class Deck {
 
@@ -16,8 +18,14 @@ public class Deck {
         this.content.addAll(initializeDeck(decksCount));
     }
 
+    /**
+     * Fills the deck and shuffles it.
+     *
+     * @param decksCount how many 52-cards deck should be included in game
+     * @return shuffled deck represented as List
+     */
     public List<Card> initializeDeck(int decksCount){
-        Map<String,Integer> cardValues = initializeValues();
+        Map<String,Integer> cardValues = initializeRankValues();
         List<Card> cardList = new ArrayList<>();
 
         for(Suit suit : Suit.values()) {
@@ -33,6 +41,11 @@ public class Deck {
         return cardList;
     }
 
+    /**
+     * Pops card from top of deck.
+     *
+     * @return card from top of deck
+     */
    public Card popCard(){
         if (this.content.isEmpty()){
             System.out.println("Oh no, deck is empty!");
@@ -42,7 +55,7 @@ public class Deck {
         }
    }
 
-    private Map<String,Integer> initializeValues(){
+    private Map<String,Integer> initializeRankValues(){
         Map<String,Integer> cardValues = new HashMap<>();
         cardValues.put("TWO",2);
         cardValues.put("THREE",3);

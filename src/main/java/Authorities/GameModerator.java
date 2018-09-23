@@ -1,6 +1,5 @@
 package Authorities;
 
-import Authorities.CardManipulator;
 import GameEntities.Dealer;
 import GameEntities.Deck;
 import GameEntities.Player;
@@ -9,7 +8,9 @@ import GameEntities.Result;
 import java.util.*;
 
 /**
- * Created by Simi on 21.9.2018.
+ * Represents moderator of game.
+ *
+ * Author: SimRau
  */
 public class GameModerator {
 
@@ -21,6 +22,11 @@ public class GameModerator {
         this.dealer = new Dealer();
     }
 
+    /**
+     * Finds out how many 52-card decks are going to be used in game.
+     *
+     * @return number of decks
+     */
     public int initializeDecksCount() {
         System.out.println("Welcome! You are here to play Blackjack. " +
                             "With how many decks would you like to play? Choose a number between 1 and 8.");
@@ -44,13 +50,17 @@ public class GameModerator {
         return decksCount;
     }
 
+    /**
+     * Initializes list of players.
+     *
+     * @return list of actual players
+     */
     public List<Player> initializePlayers() {
         Set<String> names = new HashSet<>();
         List<Player> players = new ArrayList<>();
         int playersCount = getPlayersCount();
         for (int i = 1; i <= playersCount; i++) {
             Player player = initializePlayerName(i,names);
-            player.setBet(initializeBet());
             players.add(player);
             names.add(player.getName());
         }
@@ -59,6 +69,11 @@ public class GameModerator {
         return players;
     }
 
+    /**
+     * Finds out how many players are going to play.
+     *
+     * @return number of players
+     */
     private int getPlayersCount() {
         System.out.println("Cards are ready. Now please introduce players. " +
                 "The dealer is PC. \nHow many people are going to play against it? The minimum is 1 and maximum is 6.");
@@ -81,6 +96,13 @@ public class GameModerator {
         return playersCount;
     }
 
+    /**
+     * Finds out name of player.
+     *
+     * @param number number of player
+     * @param names set of used names
+     * @return player with inputed name
+     */
     private Player initializePlayerName(int number, Set<String> names) {
         System.out.println("Hi player number " + number +
                 ". What is your name?");
@@ -96,8 +118,14 @@ public class GameModerator {
         return new Player(name);
     }
 
-    public short initializeBet(){
-        System.out.println("How much would you like to bet? Minimal bet is 20$ and maximal 5000$.");
+    /**
+     * Finds out how much player wants to bet.
+     *
+     * @param player betting player
+     * @return bet
+     */
+    public short initializeBet(Player player){
+        System.out.println(player.getName() + ", how much would you like to bet? Minimal bet is 20$ and maximal 5000$.");
         short bet = -1;
         String input = "";
         while (bet < 20 || bet > 5000) {
@@ -115,6 +143,12 @@ public class GameModerator {
         return bet;
     }
 
+    /**
+     * Prints cards of all players.
+     *
+     * @param players player list
+     * @param finalPrint is the print final
+     */
     public void printCardsOfAllPlayers(List<Player> players, boolean finalPrint) {
         System.out.println("");
         for (int i = 0; i < players.size() - 1; i++) {
@@ -125,16 +159,28 @@ public class GameModerator {
         dealer.printCardsOfPlayer(finalPrint);
     }
 
+    /**
+     * Manages turns of players
+     *
+     * @param players list of players
+     * @param deck actual deck
+     */
     public void manageGame(List<Player> players, Deck deck){
-        CardManipulator cardManipulator = new CardManipulator();
         for(int i = 0; i < players.size() - 1; i++){
             Player player = players.get(i);
             while (!player.isStanding() && !player.isSurrender()) {
-                managePlayerAnswer(player, deck,cardManipulator);
-                cardManipulator.checkTrop(player);
+                managePlayerAnswer(player, deck);
+                CardManipulator.checkTrop(player);
             }
         }
     }
+
+    /**
+     * Prints the final score.
+     *
+     * @param players list of players
+     * @return list of results
+     */
     public List<Result> printFinalScore(List<Player> players){
         System.out.println("Results: ");
         List<Result> results = new ArrayList<>();
@@ -147,14 +193,23 @@ public class GameModerator {
             result.setScore((byte)player.getActualCount());
 
             System.out.println(getFinalOfPlayer(player,result));
+            player.setAccount(player.getAccount() + result.getPrice());
+            result.setPlayerAccount(player.getAccount());
             results.add(result);
         }
 
         System.out.println("Dealer: " + dealer.getActualCount() + ". " +
-                ((dealer.getActualCount() > 21) ? "Dealer has trop." : ""));
+                ((dealer.getActualCount() > 21 && !dealer.hasBlackJack()) ? "Dealer has trop." : ""));
         return results;
     }
 
+    /**
+     * Gets note to be printed.
+     *
+     * @param player player to be considered
+     * @param result result of player
+     * @return final text
+     */
     public String getFinalOfPlayer(Player player, Result result){
         if (player.hasBlackJack()){
             result.setNote("Blackjack");
@@ -189,7 +244,13 @@ public class GameModerator {
         }
     }
 
-    public void managePlayerAnswer(Player player, Deck deck, CardManipulator manipulator) {
+    /**
+     * Manages player answers.
+     *
+     * @param player answering player
+     * @param deck actual deck
+     */
+    public void managePlayerAnswer(Player player, Deck deck) {
         String input = "";
 
         System.out.println("\n" + player.getName() + ", it is your turn!");
@@ -201,16 +262,24 @@ public class GameModerator {
 
         while (!input.equals("S") && !input.equals("H") &&  !input.equals("Q")) {
             input = scanner.nextLine().toUpperCase();
-            if (!reactToAnswer(input,manipulator,player,deck)){
+            if (!reactToAnswer(input,player,deck)){
                 input = "X";
             }
         }
     }
 
-    private boolean reactToAnswer(String input, CardManipulator manipulator, Player player, Deck deck){
+    /**
+     * Reacts to player answer.
+     *
+     * @param input player's input
+     * @param player answering player
+     * @param deck actual deck
+     * @return if the answer is allowed
+     */
+    private boolean reactToAnswer(String input, Player player, Deck deck){
         switch (input){
             case "H":
-                manipulator.hit(player,deck);
+                CardManipulator.hit(player,deck);
                 return true;
             case "S":
                 player.setStanding(true);
@@ -224,6 +293,12 @@ public class GameModerator {
         return false;
     }
 
+    /**
+     * React to surrender.
+     *
+     * @param player player who wants to surrender
+     * @return if player was allowed to surrender
+     */
     private boolean reactToSurrender(Player player){
         if (canSurrender(player)){
             player.surrender();

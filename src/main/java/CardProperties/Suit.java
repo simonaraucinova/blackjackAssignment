@@ -1,7 +1,7 @@
 package CardProperties;
 
 /**
- * Created by Simi on 21.9.2018.
+ * Represents suits.
  */
 public enum Suit {
     CLUB,

@@ -1,11 +1,11 @@
-package DBUtils; /**
- * Created by Simi on 23.9.2018.
- */
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
+package DBUtils;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+/**
+ * Source: http://zetcode.com/db/hibernatederby/
+ */
 public class HibernateUtils {
 
     private HibernateUtils() {}

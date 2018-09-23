@@ -23,5 +23,11 @@
         <property name="note" type="string">
             <column name="Note" length="30"/>
         </property>
+        <property name="gameNumber" type ="java.lang.Integer">
+            <column name ="Game"/>
+        </property>
+        <property name="playerAccount" type="java.lang.Float">
+            <column name="PlayerAccount" />
+        </property>
     </class>
 </hibernate-mapping>

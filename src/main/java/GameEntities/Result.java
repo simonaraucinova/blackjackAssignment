@@ -1,7 +1,9 @@
 package GameEntities;
 
 /**
- * Created by Simi on 23.9.2018.
+ * Represents result of one player in one round of blackjack.
+ *
+ * Author: SimRau
  */
 public class Result {
 
@@ -11,6 +13,8 @@ public class Result {
     private short bet;
     private float price;
     private String note;
+    private int gameNumber;
+    private float playerAccount;
 
     public Long getId() {
         return id;
@@ -60,9 +64,26 @@ public class Result {
         this.note = note;
     }
 
+    public float getPlayerAccount() {
+        return playerAccount;
+    }
+
+    public void setPlayerAccount(float playerAccount) {
+        this.playerAccount = playerAccount;
+    }
+
     @Override
     public String toString() {
-        return String.format("Result Id: %d Name: %s; Score: %d; Bet: %d; Price: %.2f; Note: %s",
-                id, name, score, bet, price, note);
+        return String.format("Result Game number: %d, result id: %d Name: %s; Score: %d; Bet: %d; Price: %.2f; " +
+                        "Account state: %.2f,Note: %s",
+                gameNumber,id, name, score, bet, price, playerAccount,note);
+    }
+
+    public int getGameNumber() {
+        return gameNumber;
+    }
+
+    public void setGameNumber(int gameNumber) {
+        this.gameNumber = gameNumber;
     }
 }

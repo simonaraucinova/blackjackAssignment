@@ -4,7 +4,9 @@ import CardProperties.Rank;
 import CardProperties.Suit;
 
 /**
- * Created by Simi on 21.9.2018.
+ * Represents card.
+ *
+ * Author: SimRau
  */
 
 public class Card {
@@ -53,7 +55,13 @@ public class Card {
         this.value = value;
     }
 
-    public char getSuitChar(Suit suit){
+    /**
+     * Helps to represent Suit on card.
+     *
+     * @param suit suit on card
+     * @return char representing suit
+     */
+    private char getSuitChar(Suit suit){
         switch (suit){
             case CLUB:
                 return ((char) '\u2663');
@@ -68,7 +76,13 @@ public class Card {
         }
     }
 
-    public String getRankString(Rank rank){
+    /**
+     * Helps to represent Rank on card.
+     *
+     * @param rank rank on card
+     * @return string representing rank
+     */
+    private String getRankString(Rank rank){
         switch (rank){
             case ACE:
                 return "A";
