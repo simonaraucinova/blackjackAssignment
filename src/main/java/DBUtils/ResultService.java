@@ -1,13 +1,12 @@
 package DBUtils;
 
-import DBUtils.HibernateUtils;
-import GameEntities.Result;
+import DBEntities.Result;
 import org.hibernate.Session;
 
 import java.util.List;
 
 /**
- * Rapresents the basic result service.
+ * Represents the basic result service.
  *
  * Author: SimRau
  */
@@ -57,14 +56,15 @@ public class ResultService {
     }
 
     /**
-     * Saves all results belonging to the game.
+     * Saves all results belonging to the round.
      *
      * @param results list of results to be saved
      * @param gameNumber number of game
      */
-    public static void saveAllResults(List<Result> results, int gameNumber){
+    public static void saveAllResults(List<Result> results, int roundNumber, int gameNumber){
         for (Result result : results){
             result.setGameNumber(gameNumber);
+            result.setRoundNumber(roundNumber);
             save(result);
         }
     }

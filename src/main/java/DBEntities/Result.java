@@ -1,4 +1,4 @@
-package GameEntities;
+package DBEntities;
 
 /**
  * Represents result of one player in one round of blackjack.
@@ -8,12 +8,13 @@ package GameEntities;
 public class Result {
 
     private Long id;
+    private int gameNumber;
+    private int roundNumber;
     private String name;
     private byte score;
     private short bet;
     private float price;
     private String note;
-    private int gameNumber;
     private float playerAccount;
 
     public Long getId() {
@@ -74,9 +75,9 @@ public class Result {
 
     @Override
     public String toString() {
-        return String.format("Result Game number: %d, result id: %d Name: %s; Score: %d; Bet: %d; Price: %.2f; " +
-                        "Account state: %.2f,Note: %s",
-                gameNumber,id, name, score, bet, price, playerAccount,note);
+        return String.format("Result Game id: %d, Round id: %d,Result id: %d Name: %s; Score: %d; Bet: %d; Price: %.2f; " +
+                        "Account state: %.2f, Note: %s",
+                gameNumber, roundNumber, id, name, score, bet, price, playerAccount,note);
     }
 
     public int getGameNumber() {
@@ -85,5 +86,13 @@ public class Result {
 
     public void setGameNumber(int gameNumber) {
         this.gameNumber = gameNumber;
+    }
+
+    public int getRoundNumber() {
+        return roundNumber;
+    }
+
+    public void setRoundNumber(int roundNumber) {
+        this.roundNumber = roundNumber;
     }
 }

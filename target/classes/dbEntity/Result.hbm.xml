@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="GameEntities.Result" table="RESULTS" catalog="blackjack">
+    <class name="DBEntities.Result" table="RESULTS" catalog="blackjack">
         <id name="id" type="java.lang.Long">
             <column name="Id" />
             <generator class="identity" />
@@ -25,6 +25,9 @@
         </property>
         <property name="gameNumber" type ="java.lang.Integer">
             <column name ="Game"/>
+        </property>
+        <property name="roundNumber" type ="java.lang.Integer">
+            <column name ="Round"/>
         </property>
         <property name="playerAccount" type="java.lang.Float">
             <column name="PlayerAccount" />

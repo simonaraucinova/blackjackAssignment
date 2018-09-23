@@ -10,5 +10,6 @@
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</property>
         <mapping resource="/dbEntity/Result.hbm.xml"/>
+        <mapping resource="/dbEntity/Round.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

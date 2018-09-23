@@ -1,16 +1,16 @@
 import Authorities.CardManipulator;
 import Authorities.GameModerator;
+import DBEntities.Round;
 import DBUtils.HibernateUtils;
 import DBUtils.ResultService;
+import DBUtils.RoundService;
 import GameEntities.Dealer;
 import GameEntities.Deck;
 import GameEntities.Player;
-import GameEntities.Result;
-import org.apache.derby.jdbc.EmbeddedDataSource;
+import DBEntities.Result;
 import org.hibernate.Session;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by Simi on 21.9.2018.
+ * Author: SimRau
  */
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
@@ -32,20 +32,22 @@ public class Main {
 
         while (input.toUpperCase().equals("N")) {
             counter++;
+            Round round = new Round(counter,1);
 
             Deck deck = CardManipulator.initializeRound(decksCount,players,moderator);
             List<Result> results = playGame(moderator,players,deck);
 
             Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            ResultService.saveAllResults(results, counter);
+            ResultService.saveAllResults(results, counter, 1);
+            RoundService.save(round);
 
             session.getTransaction().commit();
-
             System.out.println("If you would like to play " +
                     "new game with the same deck count and players input N and press ENTER!");
             input = new Scanner(System.in).nextLine();
         }
+        
         HibernateUtils.shutdown();
     }
 

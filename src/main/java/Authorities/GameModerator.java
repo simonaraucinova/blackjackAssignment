@@ -3,7 +3,7 @@ package Authorities;
 import GameEntities.Dealer;
 import GameEntities.Deck;
 import GameEntities.Player;
-import GameEntities.Result;
+import DBEntities.Result;
 
 import java.util.*;
 
